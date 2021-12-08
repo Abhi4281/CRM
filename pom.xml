@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.project</groupId>
+	<artifactId>crm</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
+
+
+	<!-- Defining Maven compiler properties -->
+	<properties>
+		<maven.compiler.source>6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
+
+		<!-- Defining server location -->
+		<server>C:\xampp\tomcat\webapps</server>
+	</properties>
+
+
+	<!-- Plugin configuration -->
+	<build>
+		<plugins>
+
+			<!-- Update maven site plugin -->
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.9.0</version>
+			</plugin>
+
+			<!-- WAR plugin to support war packaging -->
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<webXml>WEB-INF\web.xml</webXml>
+				</configuration>
+			</plugin>
+
+			<!-- Dependency for deploying war to local server -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<artifactItems>
+						<artifactItem>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<version>${project.version}</version>
+							<type>${project.packaging}</type>
+							<destFileName>ROOT.war</destFileName>
+						</artifactItem>
+					</artifactItems>
+					<outputDirectory>${server}</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+
+	</dependencies>
+
+
+</project>
