@@ -7,12 +7,12 @@ public class Customer {
 	private String phone;
 	
 	//Constructor
-	Customer(String id, String name) {
+	public Customer(String id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 	
-	Customer(String id, String name, String phone) {
+	public Customer(String id, String name, String phone) {
 		this(id, name);
 		this.phone = phone;
 	}

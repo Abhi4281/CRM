@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.project</groupId>
 	<artifactId>crm</artifactId>
@@ -14,7 +13,7 @@
 		<maven.compiler.target>1.6</maven.compiler.target>
 
 		<!-- Defining server location -->
-		<server>C:\xampp\tomcat\webapps</server>
+		<server>C:\xampp\tomcat</server>
 	</properties>
 
 
@@ -26,15 +25,6 @@
 			<plugin>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.9.0</version>
-			</plugin>
-
-			<!-- WAR plugin to support war packaging -->
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<webXml>WEB-INF\web.xml</webXml>
-				</configuration>
 			</plugin>
 
 			<!-- Dependency for deploying war to local server -->
@@ -60,10 +50,29 @@
 							<destFileName>ROOT.war</destFileName>
 						</artifactItem>
 					</artifactItems>
-					<outputDirectory>${server}</outputDirectory>
+					<outputDirectory>${server}\webapps</outputDirectory>
 				</configuration>
 			</plugin>
+
 		</plugins>
+
+
+		<!-- Defining Resources -->
+
+		<!-- 
+		<resources>
+			<resource>
+				<directory>D:\Git\CRM\src\main\resources</directory>
+			</resource>
+			<resource>
+				<directory>D:\Git\CRM\WEB-INF</directory>
+			</resource>
+			<resource>
+				<directory>D:\Git\CRM\META-INF</directory>
+			</resource>
+		</resources>
+		
+		-->
 	</build>
 
 	<dependencies>

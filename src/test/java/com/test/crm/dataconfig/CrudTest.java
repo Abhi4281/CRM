@@ -6,6 +6,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.project.crm.dao.CustomerDao;
 import com.project.crm.model.Customer;
 
+import com.project.crm.service.*;
+
 public class CrudTest {
 	
 	private static ApplicationContext context;
@@ -21,9 +23,35 @@ public class CrudTest {
 		//Get the Data access object		
 		CustomerDao dao = (CustomerDao)context.getBean("customerDao");
 		
-		System.out.println(customer);
-		//Create a data
-		dao.createCustomer(customer);
+		serviceTest(customer);
+		
+		System.out.println(dao.getAll());
+		
+	}
+	
+	
+	public static void crudTest(CustomerDao dao, Customer customer) {
+
+		// Create a data
+		dao.create(customer);
+
+		System.out.println(dao.getAll());
+
+		customer.setName("Abhi");
+		customer.setPhone("PHONE");
+
+		dao.update(customer);
+
+		System.out.println(dao.getAll());
+
+		dao.delete(customer);
+
+		System.out.println(dao.getAll());
+	}
+
+	
+	public static void serviceTest(Customer customer) {
+		new CustomerService().createCustomer(customer);
 	}
 
 }
