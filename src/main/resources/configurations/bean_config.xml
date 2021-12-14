@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName"
-			value="com.mysql.cj.jdbc.Driver" />
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/crm" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
@@ -24,11 +21,25 @@
 		<constructor-arg ref="jdbc" />
 	</bean>
 
-	<bean id="customer"
-		class="com.project.crm.model.Customer">
+	<bean id="productDao" class="com.project.crm.dao.ProductDao">
+		<constructor-arg value="product" />
+		<constructor-arg ref="jdbc" />
+	</bean>
+
+	<bean id="customer" class="com.project.crm.model.Customer">
 		<constructor-arg value="C01" />
 		<constructor-arg value="Customer 1" />
 		<constructor-arg value="9693080909" />
+	</bean>
+
+	<bean id="price" class="java.lang.Float">
+		<constructor-arg value="100" />
+	</bean>
+
+	<bean id="product" class="com.project.crm.model.Product">
+		<constructor-arg value="Prod_01" />
+		<constructor-arg value="Product 1" />
+		<constructor-arg ref="price" />
 	</bean>
 
 </beans>

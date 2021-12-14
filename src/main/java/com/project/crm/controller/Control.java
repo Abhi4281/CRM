@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.crm.model.*;
 import com.project.crm.service.*;
-
-import java.io.IOException;
-import java.io.OutputStream;
+import com.project.crm.support.Support;
 
 @Controller
 public class Control {
@@ -24,33 +22,13 @@ public class Control {
 
 	@RequestMapping("create")
 	public void create(HttpServletRequest req, HttpServletResponse res) {
+		String title = req.getParameter("title");
+		String description = req.getParameter("desc");
+		Float price = 0.00f;
 
-		// String id = req.getParameter("customer_id");
-		// String name = req.getParameter("customer_name");
-		// String phone = req.getParameter("customer_phone");
+		new ProductService().createProduct(new Product(title, description, price));
 
-		Customer customer = new Customer("02", "create", "REC");
-		new CustomerService().createCustomer(customer);
-
-
-		try {
-			OutputStream stream = res.getOutputStream();
-
-			String str = new CustomerService().getCustomer().toString();
-
-			stream.write(str.getBytes());
-		} catch(IOException ex) {
-			ex.printStackTrace();
-		}
-
-	}
-
-
-	@RequestMapping("test")
-	public String displayTest() {
-		Customer customer = new Customer("02", "displayTest", "PHONE");
-		new CustomerService().createCustomer(customer);
-		return "index.html";
+		Support.write("OK", res);
 	}
 
 }

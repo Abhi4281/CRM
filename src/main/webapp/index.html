@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<!--Head Element-->
+
+<head>
+    <title>Addition Window</title>
+    <link rel="stylesheet" href="FRONT-END/resources/stylesheet/common.css" />
+</head>
+
+<!-- Body Element-->
+
+<body>
+    <h1>Prepare and send JSON to add a product!</h1>
+    <input type="text" id="title" placeholder="Enter Product Title" />
+    <textarea id="desc" placeholder="Enter Product Description" cols="50"></textarea>
+    <input type="number" id="price" placeholder="Enter Product Price" />
+    <button onclick="save()">Add Details</button>
+
+</body>
+
+<!--Client side scripts-->
+<script>
+    "use strict";
+
+    async function save() {
+        let product = {
+            title: document.getElementById('title').value,
+            desc: document.getElementById('desc').value,
+            price: document.getElementById('price').value,
+        };
+
+        let server = "http://localhost:8080/apis/create";
+
+        let request = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode:"no-cors",
+            body: JSON.stringify(product)
+        };
+
+        console.log(request);
+
+        let response = await fetch(server, request).catch((err) => {
+            console.warning(err);
+        });
+
+        console.log(await response.json());
+    }
+
+</script>
+
+</html>

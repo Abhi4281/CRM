@@ -1,0 +1,13 @@
+Home Page
+Login
+Signup
+
+
+Dashboard
+Profile
+Ongoing Progress
+Skill set
+Learning Path
+	Chapters
+	Excercise
+	Evaluation

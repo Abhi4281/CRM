@@ -13,7 +13,7 @@ rename %server_root%\webapps\ROOT ROOT_BACKUP
 
 REM CI process (Integration)
 REM Initiating Code Build ---> Getting ready for deployment
-mvn clean compile site test package install
+mvn clean compile test site package install
 
 
 REM CD process (Deployment)
