@@ -1,0 +1,162 @@
+<!--Homepage to display login/signup popup
+    To redirect user to Dashboard upon successful authentication -->
+
+<!DOCTYPE html>
+
+<head>
+
+    <link rel="stylesheet" href="../resources/stylesheet/common.css" />
+    <link rel="stylesheet" href="../resources/stylesheet/homepage.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body onload="init()" onscroll="scrollAction()">
+    
+    <button class="bannerButton" onClick="showSignup()">Sign Up</button>
+    <button class="bannerButton" onClick="showSignin()">Sign In</button>
+    <!-- Image Container - Slidshow container-->
+    <div class="banner">
+        <img src="../resources/images/code_white.jpg" class="bannerImage" />
+        <!-- Container to contain various features -->
+        <div class="slides">
+            <div class="slideTitle">
+
+            </div>
+            <div class="slideTitle">
+
+            </div>
+            <div class="slideTitle">
+
+            </div>
+            <div class="slideTitle">
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--Signin and Signup form-->
+    <div class="popup" style="display:none;">
+        <button id="close" onClick="closePopup()"><b>X</b></button>
+        <center>
+        <div id="signin" style="display:none;">
+            <input type="email" placeholder="Your Email" class="field" />
+            <input type="password" placeholder="Your Password" class="field" />
+            <button class="field">Let's Get In</button>
+        </div>
+        <div id="signup" style="display:none;">
+            <input type="text" placeholder="Your Name" class="field" />
+            <input type="email" placeholder="Your Email" class="field" />
+            <input type="password" placeholder="Your Password" class="field" />
+            <input type="password" placeholder="Confirm Password" class="field" />
+            <button class="field">Let's Get Started</button>
+        </div>
+    </center>
+    </div>
+
+    <!-- Feature Description --> 
+    <div class="description">
+        
+        <div class="item">
+            <div class="title right">
+                This is sample title
+                This is sample description
+            </div>
+            <img src="../resources/images/content.png" class="itemImage left" />
+        </div>
+        <div class="item">
+            <div class="title left">
+                This is sample title
+                This is sample description
+            </div>
+            <img src="../resources/images/content.png" class="itemImage right" />
+        </div>
+        <div class="item">
+            <div class="title right">
+                This is sample title
+                This is sample description
+            </div>
+            <img src="../resources/images/content.png" class="itemImage left" />
+        </div>
+        <div class="item">
+            <div class="title left">
+                This is sample title
+                This is sample description
+            </div>
+            <img src="../resources/images/content.png" class="itemImage right" />
+        </div>
+    </div>
+
+    <!--Footer-->
+    <div class="footer">
+        This is Footer
+    </div>
+
+</body>
+
+<script>
+    "use strict";
+
+    //Function to initiate other scripts
+    function init() {
+        
+    }
+
+    //Function to add animations
+    function scrollAction() {
+        let scrollLimit = 250;
+        if(window.scrollY == scrollLimit)  {
+            document.getElementsByClassName('description')[0].scrollIntoView();
+            //document.getElementsByClassName('banner')[0].style.display = 'none';
+        } else if(window.scrollY < scrollLimit) {
+            document.getElementsByClassName('banner')[0].scrollIntoView();
+            //document.getElementsByClassName('banner')[0].style.display = 'block';
+        }
+    }
+
+
+    //Function to show signup and signin
+    function showSignup() {
+        //Hide SignIn if it is there and display signup.
+        //Hide signup if it is visible. 
+        let signup = document.getElementById("signup");
+        let signin = document.getElementById("signin");
+        let popup = document.getElementsByClassName("popup")[0];
+
+        if(signup.style.display == "block") {
+            signup.style.display = "none";
+            return;
+        }
+
+        popup.style.display = 'none';
+        signin.style.display = "none";
+        signup.style.display = "block";
+        popup.style.display = 'block';
+    }
+
+    function showSignin() {
+        //Hide Signup if it is there and display signin
+        //Hide signin if it is visible.
+        let signup = document.getElementById("signup");
+        let signin = document.getElementById("signin");
+        let popup = document.getElementsByClassName("popup")[0];
+
+        if(signin.style.display == "block") {
+            signin.style.display = "none";
+            return;
+        }
+
+        popup.style.display = 'none';
+        signup.style.display = "none";
+        signin.style.display = "block";
+        popup.style.display = 'block';
+    }   
+
+    function closePopup() {
+        document.getElementsByClassName("popup")[0].style.display = "none";
+        document.getElementById("signup").style.display = "none";
+        document.getElementById("signin").style.display = "none";
+    }
+</script>
+
+</html>
